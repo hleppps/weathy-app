@@ -22,8 +22,17 @@
     "project": "./tsconfig.json"
   },
   "plugins": ["react", "@typescript-eslint", "prettier"],
+  "ignorePatterns": [".eslintrc.json"],
   "rules": {
     "quotes": ["error", "double", { "avoidEscape": true }],
-    "@typescript-eslint/quotes": ["error", "double", { "avoidEscape": true }]
+    "@typescript-eslint/quotes": ["error", "double", { "avoidEscape": true }],
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ],
+    "react/react-in-jsx-scope": "off",
+    "react/function-component-definition": "off"
   }
 }
