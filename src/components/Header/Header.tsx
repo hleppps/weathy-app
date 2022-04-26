@@ -40,10 +40,27 @@ const Header: FC = () => {
     <AppBar position="static">
       <Container>
         <Toolbar disableGutters>
-          <Box sx={{ mr: 2, display: { xs: "none", md: "flex" } }}>
+          <Box
+            sx={{
+              mr: 5,
+              display: { xs: "none", md: "flex" },
+              alignItems: "center",
+            }}
+          >
             <IconButton size="large">
               <img src={logoImage} className={styles.logo} alt="logo" />
             </IconButton>
+            <Typography
+              variant="h6"
+              noWrap
+              component="div"
+              sx={{
+                flexGrow: 1,
+                display: { xs: "none", md: "flex" },
+              }}
+            >
+              WEATHY
+            </Typography>
           </Box>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -79,10 +96,24 @@ const Header: FC = () => {
             </Menu>
           </Box>
 
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: { xs: "flex", md: "none" },
+              alignItems: "center",
+            }}
+          >
             <IconButton size="large">
               <img src={logoImage} className={styles.logo} alt="logo" />
             </IconButton>
+            <Typography
+              variant="h6"
+              noWrap
+              component="div"
+              sx={{ mr: 2, display: { xs: "flex", md: "none" } }}
+            >
+              WEATHY
+            </Typography>
           </Box>
 
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>

@@ -16,7 +16,12 @@ const theme = responsiveFontSizes(
         main: "#009688",
       },
       secondary: {
-        main: "#ffffff",
+        main: "#36b0a4",
+        contrastText: "#ffffff",
+      },
+      gray: {
+        light: "#ced0d1",
+        dark: "#666666",
       },
     },
     typography: {
@@ -27,8 +32,42 @@ const theme = responsiveFontSizes(
           fontSize: pxToRem(16),
         },
       },
+      subtitle1: {
+        fontSize: pxToRem(14),
+        fontWeight: "bold",
+
+        [breakpoints.up("md")]: {
+          fontSize: pxToRem(16),
+        },
+      },
+      body2: {
+        fontSize: pxToRem(16),
+
+        [breakpoints.up("md")]: {
+          fontSize: pxToRem(18),
+        },
+      },
+      subtitle2: {
+        fontSize: pxToRem(16),
+        fontWeight: "bold",
+
+        [breakpoints.up("md")]: {
+          fontSize: pxToRem(18),
+        },
+      },
     },
   }),
 );
+
+declare module "@mui/material/styles" {
+  interface CustomPalette {
+    gray: {
+      light: string;
+      dark: string;
+    };
+  }
+  interface Palette extends CustomPalette {}
+  interface PaletteOptions extends CustomPalette {}
+}
 
 export default theme;
