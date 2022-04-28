@@ -1,93 +1,58 @@
 import { FC, useRef } from "react";
 import Slider from "react-slick";
-import { ForecastDayItem } from "../../../types/weatherApi";
+import { ForecastCarouselItem } from "../../../constants";
+import { ForecastHourItem } from "../../../types/weatherApiTypes";
 import Container from "../Container";
 import styles from "./Carousel.module.scss";
 import CarouselButton from "./CarouselButton";
-import CarouselItem from "./CarouselItem";
+import CarouselDailyItem from "./CarouselDailyItem";
 import { CAROUSEL_BUTTON_DIRECTIONS } from "./constants";
 
 const { back: backButton, forward: forwardButton } = CAROUSEL_BUTTON_DIRECTIONS;
 
 const sliderBreakpoints = [
   {
-    breakpoint: 1200,
+    breakpoint: 900,
     settings: {
-      slidesToShow: 7.5,
+      slidesToShow: 4,
       slidesToScroll: 4,
     },
   },
   {
-    breakpoint: 1100,
+    breakpoint: 760,
     settings: {
-      slidesToShow: 6.5,
-      slidesToScroll: 4,
-    },
-  },
-  {
-    breakpoint: 1000,
-    settings: {
-      slidesToShow: 5.5,
-      slidesToScroll: 3,
-    },
-  },
-  {
-    breakpoint: 850,
-    settings: {
-      slidesToShow: 4.5,
-      slidesToScroll: 3,
-    },
-  },
-  {
-    breakpoint: 730,
-    settings: {
-      slidesToShow: 3.5,
+      slidesToShow: 2,
       slidesToScroll: 2,
     },
   },
   {
-    breakpoint: 600,
-    settings: {
-      slidesToShow: 2.5,
-      slidesToScroll: 1,
-    },
-  },
-  {
-    breakpoint: 460,
-    settings: {
-      slidesToShow: 2,
-      slidesToScroll: 1,
-    },
-  },
-  {
-    breakpoint: 400,
-    settings: {
-      slidesToShow: 1.5,
-      slidesToScroll: 1,
-    },
-  },
-  {
-    breakpoint: 340,
+    breakpoint: 500,
     settings: {
       slidesToShow: 1,
-      slidesToScroll: 1,
+      slidesToScroll: 2,
     },
   },
 ];
 
-const Carousel: FC<{ data: ForecastDayItem[] }> = ({ data }) => {
+interface CarouselProps {
+  // data: ForecastDayItem[];
+  data: ForecastHourItem[];
+  type: ForecastCarouselItem;
+}
+
+const Carousel: FC<CarouselProps> = ({ data, type }) => {
   const sliderRef: any = useRef(null);
 
   const settings = {
+    className: "slider variable-width",
     infinite: false,
-    speed: 500,
-    slidesToShow: 8.5,
+    slidesToShow: 5,
     slidesToScroll: 5,
-    initialSlide: 0,
+    variableWidth: true,
     nextArrow: (
       <CarouselButton
         onClick={() => {
-          sliderRef.current!.slickPrev();
+          sliderRef.current?.slickPrev();
         }}
         direction={forwardButton}
       />
@@ -95,7 +60,7 @@ const Carousel: FC<{ data: ForecastDayItem[] }> = ({ data }) => {
     prevArrow: (
       <CarouselButton
         onClick={() => {
-          sliderRef.current!.slickNext();
+          sliderRef?.current?.slickNext();
         }}
         direction={backButton}
       />
@@ -103,15 +68,13 @@ const Carousel: FC<{ data: ForecastDayItem[] }> = ({ data }) => {
     responsive: sliderBreakpoints,
   };
 
-  console.log(forwardButton);
-
   const carouselItems = data.map((dataItem) => (
-    <CarouselItem key={dataItem.date_epoch} data={dataItem} />
+    <CarouselDailyItem key={dataItem.date_epoch} data={dataItem} />
   ));
 
   return (
     <Container>
-      <Slider {...settings} className={styles.carousel}>
+      <Slider {...settings} ref={sliderRef} className={styles.carousel}>
         {carouselItems}
       </Slider>
     </Container>

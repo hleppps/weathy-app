@@ -1,4 +1,4 @@
-import { WeatherForecastResponse } from "../types/weatherApi";
+import { WeatherForecastResponse } from "../types/weatherApiTypes";
 import { client } from "./api";
 
 export const getWeatherForecast = async (city: string, days: number) => {

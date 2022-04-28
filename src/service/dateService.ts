@@ -1,6 +1,6 @@
 export const getDateOrdinal = (dateNumber: number) => {
-  if (dateNumber > 3 && dateNumber < 21) return "th";
   let postfix: "st" | "nd" | "rd" | "th";
+  if (dateNumber > 3 && dateNumber < 21) postfix = "th";
   switch (dateNumber % 10) {
     case 1:
       postfix = "st";
