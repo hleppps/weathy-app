@@ -9,6 +9,8 @@ export interface ForecastHourItem {
   time: string;
   condition: ForecastCondition;
   temp_c: number;
+  wind_mph: number;
+  cloud: number;
   [x: string | number | symbol]: unknown;
 }
 

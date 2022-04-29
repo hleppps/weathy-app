@@ -20,8 +20,9 @@ const theme = responsiveFontSizes(
         contrastText: "#ffffff",
       },
       gray: {
+        main: "#666666",
         light: "#ced0d1",
-        dark: "#666666",
+        dark: "#64748B",
       },
     },
     typography: {
@@ -62,12 +63,17 @@ const theme = responsiveFontSizes(
 declare module "@mui/material/styles" {
   interface CustomPalette {
     gray: {
+      main: string;
       light: string;
       dark: string;
     };
   }
-  interface Palette extends CustomPalette {}
-  interface PaletteOptions extends CustomPalette {}
+  interface Palette extends CustomPalette {
+    gray: Palette["primary"];
+  }
+  interface PaletteOptions extends CustomPalette {
+    gray: PaletteOptions["primary"];
+  }
 }
 
 export default theme;

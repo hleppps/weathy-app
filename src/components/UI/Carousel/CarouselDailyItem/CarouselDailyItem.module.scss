@@ -10,15 +10,19 @@
   margin-top: 40px;
   padding: 10px 10px;
 
-  box-shadow: 0 -7px 0 #9bd9d3 inset, 0 7px 0 transparent inset,
-    1px 0 0 $light-gray, -1px 0 0 $light-gray inset;
+  box-shadow: 0 -7px 0 $wth1-aqua inset, 0 7px 0 transparent inset,
+    -1px 0 0 $wth1-light-gray;
 
   user-select: none;
   cursor: pointer;
+  border: none;
+  background-color: $wth1-base;
 
   &:hover {
-    box-shadow: 0 -7px 0 transparent inset, 0 7px 0 #9bd9d3 inset,
-      1px 0 0 $light-gray, -1px 0 0 $light-gray inset;
+    background-color: $wth1-base;
+    border: none;
+    box-shadow: 0 -7px 0 transparent inset, 0 7px 0 $wth1-aqua inset,
+      -1px 0 0 $wth1-light-gray;
   }
 
   &:hover .item_title {
@@ -33,12 +37,12 @@
 
   grid-template-columns: 4fr, 3fr;
 
-  box-shadow: 0 -7px 0 transparent inset, 0 7px 0 #9bd9d3 inset,
-    1px 0 0 $light-gray inset, -1px 0 0 $light-gray inset;
+  box-shadow: 0 -7px 0 transparent inset, 0 7px 0 $wth1-aqua inset,
+    1px 0 0 $wth1-light-gray inset, -1px 0 0 $wth1-light-gray inset;
 
   &:hover {
-    box-shadow: 0 -7px 0 transparent inset, 0 7px 0 #9bd9d3 inset,
-      1px 0 0 $light-gray inset, -1px 0 0 $light-gray inset;
+    box-shadow: 0 -7px 0 transparent inset, 0 7px 0 $wth1-aqua inset,
+      1px 0 0 $wth1-light-gray inset, -1px 0 0 $wth1-light-gray inset;
   }
 
   .item_description {
@@ -62,7 +66,7 @@
   align-items: center;
 }
 
-.item_image {
+.itemDescription {
   width: 100%;
   max-width: 50px;
   display: grid;

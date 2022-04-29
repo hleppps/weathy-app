@@ -951,7 +951,6 @@ export const dummyForecastData: ForecastDayItem[] = [
         icon: "//cdn.weatherapi.com/weather/64x64/day/113.png",
       },
     },
-    selected: true,
   },
   {
     date: "2022-04-23",
@@ -1903,6 +1902,7 @@ export const dummyForecastData: ForecastDayItem[] = [
         icon: "//cdn.weatherapi.com/weather/64x64/night/116.png",
       },
     },
+    selected: true,
   },
   {
     date: "2022-04-24",

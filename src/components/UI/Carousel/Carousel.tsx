@@ -1,49 +1,38 @@
-import { FC, useRef } from "react";
+import {
+  Dispatch,
+  FC,
+  SetStateAction,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import Slider from "react-slick";
-import { ForecastCarouselItem } from "../../../constants";
-import { ForecastHourItem } from "../../../types/weatherApiTypes";
+import {
+  CarouselButtonDirections,
+  sliderBreakpoints,
+} from "../../../constants/carouselConstants";
+import { CarouselDataType } from "../../../types/carouselTypes";
+import {
+  getTemperatureRange,
+  isDayTypeItem,
+  isHourTypeItem,
+} from "../../../utils/carouselUtils";
 import Container from "../Container";
 import styles from "./Carousel.module.scss";
 import CarouselButton from "./CarouselButton";
 import CarouselDailyItem from "./CarouselDailyItem";
-import { CAROUSEL_BUTTON_DIRECTIONS } from "./constants";
+import CarouselHourlyItem from "./CarouselHourlyItem";
 
-const { back: backButton, forward: forwardButton } = CAROUSEL_BUTTON_DIRECTIONS;
-
-const sliderBreakpoints = [
-  {
-    breakpoint: 900,
-    settings: {
-      slidesToShow: 4,
-      slidesToScroll: 4,
-    },
-  },
-  {
-    breakpoint: 760,
-    settings: {
-      slidesToShow: 2,
-      slidesToScroll: 2,
-    },
-  },
-  {
-    breakpoint: 500,
-    settings: {
-      slidesToShow: 1,
-      slidesToScroll: 2,
-    },
-  },
-];
+const { back: backButton, forward: forwardButton } = CarouselButtonDirections;
 
 interface CarouselProps {
-  // data: ForecastDayItem[];
-  data: ForecastHourItem[];
-  type: ForecastCarouselItem;
+  data: CarouselDataType[];
+  selectedForecastDay?: number;
+  setSelectedForecastDay?: Dispatch<SetStateAction<number>>;
 }
 
-const Carousel: FC<CarouselProps> = ({ data, type }) => {
-  const sliderRef: any = useRef(null);
-
-  const settings = {
+const getSliderSettings = (ref: any) => {
+  return {
     className: "slider variable-width",
     infinite: false,
     slidesToShow: 5,
@@ -52,7 +41,7 @@ const Carousel: FC<CarouselProps> = ({ data, type }) => {
     nextArrow: (
       <CarouselButton
         onClick={() => {
-          sliderRef.current?.slickPrev();
+          ref.current?.slickPrev();
         }}
         direction={forwardButton}
       />
@@ -60,21 +49,78 @@ const Carousel: FC<CarouselProps> = ({ data, type }) => {
     prevArrow: (
       <CarouselButton
         onClick={() => {
-          sliderRef?.current?.slickNext();
+          ref.current?.slickNext();
         }}
         direction={backButton}
       />
     ),
     responsive: sliderBreakpoints,
   };
+};
 
-  const carouselItems = data.map((dataItem) => (
-    <CarouselDailyItem key={dataItem.date_epoch} data={dataItem} />
-  ));
+const Carousel: FC<CarouselProps> = ({
+  data,
+  selectedForecastDay,
+  setSelectedForecastDay,
+}) => {
+  const [hourlyTemperatureRange, setHourlyTemperatureRange] = useState({
+    min: 100,
+    max: 0,
+  });
+  const sliderRef: any = useRef(null);
+
+  const sliderSettings = getSliderSettings(sliderRef);
+
+  const getCarouselItems = (dataItems: CarouselDataType[]) => {
+    if (isDayTypeItem(dataItems)) {
+      return dataItems.map((dataItem, idx) => {
+        const selected = selectedForecastDay === idx;
+        return (
+          <CarouselDailyItem
+            key={dataItem.date_epoch}
+            data={dataItem}
+            selected={selected}
+            selectItemHandler={() => setSelectedForecastDay!(idx)}
+          />
+        );
+      });
+    }
+
+    if (isHourTypeItem(dataItems)) {
+      // const curDate = new Date();
+      const itemsToRender: JSX.Element[] = [];
+
+      dataItems.forEach((dataItem) => {
+        // const itemDate = new Date(dataItem.time);
+        // if (itemDate >= curDate) {
+        itemsToRender.push(
+          <CarouselHourlyItem
+            key={dataItem.time_epoch}
+            data={dataItem}
+            hourlyTemperatureRange={hourlyTemperatureRange}
+          />,
+        );
+        // }
+      });
+      return itemsToRender;
+    }
+
+    return <div>No items to render</div>;
+  };
+
+  const carouselItems = getCarouselItems(data);
+
+  useEffect(() => {
+    if (isHourTypeItem(data)) {
+      setHourlyTemperatureRange((prevValue) =>
+        getTemperatureRange(data, prevValue),
+      );
+    }
+  }, [data]);
 
   return (
     <Container>
-      <Slider {...settings} ref={sliderRef} className={styles.carousel}>
+      <Slider {...sliderSettings} ref={sliderRef} className={styles.carousel}>
         {carouselItems}
       </Slider>
     </Container>

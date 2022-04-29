@@ -1,0 +1,39 @@
+@import "../../../../assets/styles/variables.scss";
+
+.carouselItem {
+  display: grid;
+  grid-template-rows: 1fr 4fr 2fr;
+  align-items: flex-end;
+  gap: 10px;
+
+  width: 70px;
+  height: 400px;
+  margin-top: 40px;
+  padding: 10px;
+
+  box-shadow: 0 1px 0 $wth1-light-gray inset, 0 -1px 0 $wth1-light-gray inset,
+    -1px 0 0 $wth1-light-gray inset;
+
+  & div {
+    text-align: center;
+  }
+}
+
+.itemTemperature_icon {
+  max-width: 100%;
+
+  & img {
+    width: 100%;
+  }
+}
+
+.item_atmospheric {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 5px;
+
+  & > div:first-child {
+    border-bottom: 1px solid black;
+    padding-bottom: 5px;
+  }
+}

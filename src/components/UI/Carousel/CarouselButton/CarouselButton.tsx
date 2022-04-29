@@ -4,9 +4,9 @@ import {
 } from "@mui/icons-material";
 import { Button } from "@mui/material";
 import { FC } from "react";
-import { CAROUSEL_BUTTON_DIRECTIONS } from "../constants";
+import { CarouselButtonDirections } from "../../../../constants/carouselConstants";
 
-const { back: backButton, forward: forwardButton } = CAROUSEL_BUTTON_DIRECTIONS;
+const { back: backButton, forward: forwardButton } = CarouselButtonDirections;
 
 interface CarouselButtonProps {
   direction: typeof backButton | typeof forwardButton;
@@ -23,7 +23,7 @@ const CarouselButton: FC<CarouselButtonProps> = ({ direction, onClick }) => {
 
   return (
     <Button
-      sx={{ borderRadius: 0, marginTop: "40px" }}
+      sx={{ borderRadius: 0, marginTop: "40px", minWidth: "40px" }}
       onClick={onClick}
       type="button"
       variant="contained"
