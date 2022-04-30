@@ -3,6 +3,11 @@ export enum CarouselButtonDirections {
   back = "BACK",
 }
 
+export enum CarouselTypes {
+  daily = "DAILY",
+  hourly = "HOURLY",
+}
+
 export const sliderBreakpoints = [
   {
     breakpoint: 900,

@@ -9,6 +9,7 @@ import {
 import Slider from "react-slick";
 import {
   CarouselButtonDirections,
+  CarouselTypes,
   sliderBreakpoints,
 } from "../../../constants/carouselConstants";
 import { CarouselDataType } from "../../../types/carouselTypes";
@@ -29,14 +30,13 @@ interface CarouselProps {
   data: CarouselDataType[];
   selectedForecastDay?: number;
   setSelectedForecastDay?: Dispatch<SetStateAction<number>>;
+  type: CarouselTypes;
 }
 
 const getSliderSettings = (ref: any) => {
   return {
     className: "slider variable-width",
     infinite: false,
-    slidesToShow: 5,
-    slidesToScroll: 5,
     variableWidth: true,
     nextArrow: (
       <CarouselButton
@@ -54,6 +54,8 @@ const getSliderSettings = (ref: any) => {
         direction={backButton}
       />
     ),
+    slidesToShow: 5,
+    slidesToScroll: 5,
     responsive: sliderBreakpoints,
   };
 };
@@ -62,6 +64,7 @@ const Carousel: FC<CarouselProps> = ({
   data,
   selectedForecastDay,
   setSelectedForecastDay,
+  type,
 }) => {
   const [hourlyTemperatureRange, setHourlyTemperatureRange] = useState({
     min: 100,
@@ -118,9 +121,13 @@ const Carousel: FC<CarouselProps> = ({
     }
   }, [data]);
 
+  const carouselStyles = `${styles.carousel} ${
+    type === CarouselTypes.daily ? styles.carouselDaily : styles.carouselHourly
+  }`;
+
   return (
     <Container>
-      <Slider {...sliderSettings} ref={sliderRef} className={styles.carousel}>
+      <Slider {...sliderSettings} ref={sliderRef} className={carouselStyles}>
         {carouselItems}
       </Slider>
     </Container>

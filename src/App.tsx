@@ -1,6 +1,7 @@
 import { FC, useEffect, useState } from "react";
 import Header from "./components/Header";
 import Carousel from "./components/UI/Carousel";
+import { CarouselTypes } from "./constants/carouselConstants";
 import { dummyForecastData } from "./constants/dummyData";
 // import { getWeatherForecast } from "./service/weatherService";
 
@@ -20,8 +21,12 @@ const App: FC = () => {
         data={forecastData}
         selectedForecastDay={selectedForecastDay}
         setSelectedForecastDay={setSelectedForecastDay}
+        type={CarouselTypes.daily}
       />
-      <Carousel data={forecastData[selectedForecastDay].hour} />
+      <Carousel
+        data={forecastData[selectedForecastDay].hour}
+        type={CarouselTypes.hourly}
+      />
     </div>
   );
 };

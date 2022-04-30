@@ -23,7 +23,12 @@ const CarouselButton: FC<CarouselButtonProps> = ({ direction, onClick }) => {
 
   return (
     <Button
-      sx={{ borderRadius: 0, marginTop: "40px", minWidth: "40px" }}
+      sx={{
+        borderRadius: 0,
+        marginTop: "40px",
+        maxWidth: "40px",
+        minWidth: "40px",
+      }}
       onClick={onClick}
       type="button"
       variant="contained"

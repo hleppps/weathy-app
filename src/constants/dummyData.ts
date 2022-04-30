@@ -959,7 +959,7 @@ export const dummyForecastData: ForecastDayItem[] = [
       {
         time_epoch: 1651100400,
         time: "2022-04-28 00:00",
-        temp_c: 6.2,
+        temp_c: 23.2,
         temp_f: 43.2,
         is_day: 0,
         condition: {
@@ -1911,7 +1911,7 @@ export const dummyForecastData: ForecastDayItem[] = [
       {
         time_epoch: 1651100400,
         time: "2022-04-28 00:00",
-        temp_c: 6.2,
+        temp_c: 24.2,
         temp_f: 43.2,
         is_day: 0,
         condition: {
@@ -2862,7 +2862,7 @@ export const dummyForecastData: ForecastDayItem[] = [
       {
         time_epoch: 1651100400,
         time: "2022-04-28 00:00",
-        temp_c: 6.2,
+        temp_c: 25.2,
         temp_f: 43.2,
         is_day: 0,
         condition: {
@@ -3813,7 +3813,7 @@ export const dummyForecastData: ForecastDayItem[] = [
       {
         time_epoch: 1651100400,
         time: "2022-04-28 00:00",
-        temp_c: 6.2,
+        temp_c: 26.2,
         temp_f: 43.2,
         is_day: 0,
         condition: {
