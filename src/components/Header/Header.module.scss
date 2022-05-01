@@ -1,3 +1,15 @@
 .logo {
-  max-width: 40px;
+  width: 40px;
+}
+
+.navLink {
+  margin: 0 10px;
+
+  color: #fff;
+  text-transform: uppercase;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }

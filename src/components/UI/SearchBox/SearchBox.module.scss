@@ -1,0 +1,29 @@
+.searchBox {
+  display: flex;
+  align-items: center;
+
+  padding: 10px 15px;
+
+  background-color: #36b0a4;
+
+  // TODO: Remove after page creation
+  margin-top: 50px;
+
+  & > * {
+    flex-basis: 200px;
+  }
+}
+
+.searchBox_input {
+  flex-grow: 1;
+
+  display: flex;
+  align-items: center;
+  margin-left: 30px;
+
+  background-color: white;
+}
+
+.input_textField {
+  flex-grow: 1;
+}

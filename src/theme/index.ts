@@ -14,6 +14,7 @@ const theme = responsiveFontSizes(
     palette: {
       primary: {
         main: "#009688",
+        contrastText: "#ffffff",
       },
       secondary: {
         main: "#36b0a4",
@@ -41,6 +42,9 @@ const theme = responsiveFontSizes(
           fontSize: pxToRem(16),
         },
       },
+      caption: {
+        fontSize: pxToRem(16),
+      },
       body2: {
         fontSize: pxToRem(16),
 
@@ -61,17 +65,10 @@ const theme = responsiveFontSizes(
 );
 
 declare module "@mui/material/styles" {
-  interface CustomPalette {
-    gray: {
-      main: string;
-      light: string;
-      dark: string;
-    };
-  }
-  interface Palette extends CustomPalette {
+  interface Palette {
     gray: Palette["primary"];
   }
-  interface PaletteOptions extends CustomPalette {
+  interface PaletteOptions {
     gray: PaletteOptions["primary"];
   }
 }

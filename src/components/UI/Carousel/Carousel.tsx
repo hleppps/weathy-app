@@ -54,7 +54,7 @@ const getSliderSettings = (ref: any) => {
         direction={backButton}
       />
     ),
-    slidesToShow: 5,
+    slidesToShow: 1,
     slidesToScroll: 5,
     responsive: sliderBreakpoints,
   };
@@ -90,20 +90,20 @@ const Carousel: FC<CarouselProps> = ({
     }
 
     if (isHourTypeItem(dataItems)) {
-      // const curDate = new Date();
+      const curDate = new Date();
       const itemsToRender: JSX.Element[] = [];
 
       dataItems.forEach((dataItem) => {
-        // const itemDate = new Date(dataItem.time);
-        // if (itemDate >= curDate) {
-        itemsToRender.push(
-          <CarouselHourlyItem
-            key={dataItem.time_epoch}
-            data={dataItem}
-            hourlyTemperatureRange={hourlyTemperatureRange}
-          />,
-        );
-        // }
+        const itemDate = new Date(dataItem.time);
+        if (itemDate >= curDate) {
+          itemsToRender.push(
+            <CarouselHourlyItem
+              key={dataItem.time_epoch}
+              data={dataItem}
+              hourlyTemperatureRange={hourlyTemperatureRange}
+            />,
+          );
+        }
       });
       return itemsToRender;
     }

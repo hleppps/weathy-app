@@ -60,10 +60,10 @@ const CarouselDailyItem: FC<CarouselDailyItemProps> = ({
         </div>
         <div className={styles.itemDescription_temperature}>
           <Typography variant={selected ? "subtitle2" : "subtitle1"}>
-            {day.mintemp_c}&deg;
+            {day.maxtemp_c}&deg;
           </Typography>
           <Typography variant={selected ? "body2" : "body1"}>
-            {day.maxtemp_c}&deg;
+            {day.mintemp_c}&deg;
           </Typography>
         </div>
       </div>

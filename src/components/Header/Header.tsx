@@ -10,11 +10,18 @@ import Toolbar from "@mui/material/Toolbar";
 import Tooltip from "@mui/material/Tooltip";
 import Typography from "@mui/material/Typography";
 import { FC, useState } from "react";
+import { Link } from "react-router-dom";
 import logoImage from "../../assets/images/logo.png";
+import { PROJECT_NAME } from "../../constants";
 import Container from "../UI/Container";
 import styles from "./Header.module.scss";
 
-const pages = ["Products", "Pricing", "Blog"];
+const pages = [
+  { id: 1, title: "Home", href: "/" },
+  { id: 2, title: "News", href: "/news" },
+  { id: 3, title: "Gallery", href: "/gallery" },
+];
+
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const Header: FC = () => {
@@ -59,7 +66,7 @@ const Header: FC = () => {
                 display: { xs: "none", md: "flex" },
               }}
             >
-              WEATHY
+              {PROJECT_NAME}
             </Typography>
           </Box>
 
@@ -89,8 +96,8 @@ const Header: FC = () => {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                <MenuItem key={page.id} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">{page.title}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -112,19 +119,15 @@ const Header: FC = () => {
               component="div"
               sx={{ mr: 2, display: { xs: "flex", md: "none" } }}
             >
-              WEATHY
+              {PROJECT_NAME}
             </Typography>
           </Box>
 
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                {page}
-              </Button>
+              <Link key={page.id} className={styles.navLink} to={page.href}>
+                <Typography variant="caption">{page.title}</Typography>
+              </Link>
             ))}
           </Box>
 
