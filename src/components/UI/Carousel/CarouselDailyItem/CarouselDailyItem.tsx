@@ -45,8 +45,12 @@ const CarouselDailyItem: FC<CarouselDailyItemProps> = ({
         <Typography component="span" variant={selected ? "body2" : "body1"}>
           {weekDay}
         </Typography>
-        &nbsp;
-        <Typography component="span" color="gray.main">
+        <Typography
+          component="span"
+          color="gray.main"
+          variant={selected ? "body2" : "body1"}
+        >
+          &nbsp;
           {dateOrdinal}
         </Typography>
       </div>
