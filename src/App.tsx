@@ -16,9 +16,9 @@ const App: FC = () => {
       <Container>
         <Routes>
           <Route path="*" element={<NotFoundPage />} />
-          <Route path="/" element={<HomePage />} />
-          <Route path="/news" element={<NewsPage />} />
-          <Route path="/gallery" element={<GalleryPage />} />
+          <Route path={HOME_PAGE.href} element={<HomePage />} />
+          <Route path={NEWS_PAGE.href} element={<NewsPage />} />
+          <Route path={GALLERY_PAGE.href} element={<GalleryPage />} />
         </Routes>
       </Container>
     </BrowserRouter>
