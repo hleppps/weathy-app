@@ -1,8 +1,15 @@
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { FC } from "react";
 
 const Footer: FC = () => {
-  return <Box sx={{ padding: 2, background: "red" }}>footer</Box>;
+  return (
+    <Box
+      bgcolor="gray.lighter"
+      sx={{ padding: 3, background: "#f5f5f5", textAlign: "center" }}
+    >
+      <Typography color="gray.main">Created by @hleppps</Typography>
+    </Box>
+  );
 };
 
 export default Footer;
