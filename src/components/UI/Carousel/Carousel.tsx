@@ -1,3 +1,4 @@
+import { Box } from "@mui/material";
 import {
   Dispatch,
   FC,
@@ -127,9 +128,11 @@ const Carousel: FC<CarouselProps> = ({
 
   return (
     <Container>
-      <Slider {...sliderSettings} ref={sliderRef} className={carouselStyles}>
-        {carouselItems}
-      </Slider>
+      <Box>
+        <Slider {...sliderSettings} ref={sliderRef} className={carouselStyles}>
+          {carouselItems}
+        </Slider>
+      </Box>
     </Container>
   );
 };
