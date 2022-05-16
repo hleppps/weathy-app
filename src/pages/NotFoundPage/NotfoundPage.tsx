@@ -22,9 +22,11 @@ const NotFoundPage: FC = () => {
       >
         PAGE NOT FOUND!
       </Typography>
-      <Button href={HOME_PAGE.href}>
-        <Typography variant="caption">{HOME_PAGE.title}</Typography>
-      </Button>
+      <Box marginTop={2}>
+        <Button component={Link} to={HOME_PAGE.href} variant="outlined">
+          <Typography variant="caption">GO {HOME_PAGE.title}</Typography>
+        </Button>
+      </Box>
     </Box>
   );
 };
