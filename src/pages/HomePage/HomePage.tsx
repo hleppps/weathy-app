@@ -1,6 +1,7 @@
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { FC, useCallback, useEffect, useState } from "react";
 import Carousel from "../../components/UI/Carousel";
+import Container from "../../components/UI/Container";
 import SearchBox from "../../components/UI/SearchBox";
 import { DEFAULT_SELECTED_CITY } from "../../constants";
 import { CarouselTypes } from "../../constants/carouselConstants";
@@ -39,6 +40,7 @@ const HomePage: FC = () => {
         placeholder="Enter a city"
         errorMsg={searchboxErrorMsg}
       />
+
       <Box marginTop={5}>
         <Carousel
           data={forecastData}
@@ -47,6 +49,18 @@ const HomePage: FC = () => {
           type={CarouselTypes.daily}
         />
       </Box>
+
+      <Box marginTop={5}>
+        <Container>
+          <Typography variant="h6" sx={{ textDecoration: "underline" }}>
+            Unfortunately, API used for this project provides an opportunity to
+            get realtime data only for a 3 days (today, +2)
+            <br />
+            Thus other data is dummy.
+          </Typography>
+        </Container>
+      </Box>
+
       <Box marginTop={2}>
         <Carousel
           data={forecastData[selectedForecastDay].hour}
