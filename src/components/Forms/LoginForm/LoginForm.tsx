@@ -32,12 +32,12 @@ const LoginForm: FC = () => {
     loginUser(auth, email, password)
       .then(() => {
         setErrorMsg(null);
-        helpers.setSubmitting(false);
       })
       .catch((error) => {
         setErrorMsg(error.message);
         helpers.setSubmitting(false);
       });
+    helpers.setSubmitting(false);
   };
 
   const formik = useFormik({

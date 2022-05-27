@@ -52,12 +52,11 @@ const RegisterForm: FC = () => {
     registerUser(auth, email, password, displayName)
       .then(() => {
         setErrorMsg(null);
-        helpers.setSubmitting(false);
       })
       .catch((error) => {
         setErrorMsg(error.message);
-        helpers.setSubmitting(false);
       });
+    helpers.setSubmitting(false);
   };
 
   const formik = useFormik({

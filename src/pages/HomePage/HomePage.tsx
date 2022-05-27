@@ -22,7 +22,7 @@ const HomePage: FC = () => {
         setSearchboxErrorMsg(null);
       })
       .catch((error) => {
-        setSearchboxErrorMsg(error.message);
+        setSearchboxErrorMsg(error.data.error.message);
       });
   }, [selectedCity]);
 

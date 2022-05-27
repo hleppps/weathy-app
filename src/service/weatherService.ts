@@ -11,8 +11,5 @@ export const getWeatherForecast = async (city: string, days: number) => {
     .then((response) => response.data.forecast.forecastday)
     .then((forecast) =>
       forecast.length < 10 ? [...forecast, ...dummyForecastData] : forecast,
-    )
-    .catch((error) => {
-      handleError(error.data.error);
-    });
+    );
 };

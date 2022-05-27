@@ -1902,7 +1902,6 @@ export const dummyForecastData: ForecastDayItem[] = [
         icon: "//cdn.weatherapi.com/weather/64x64/night/116.png",
       },
     },
-    selected: true,
   },
   {
     date: "2023-04-24",
