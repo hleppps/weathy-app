@@ -8,8 +8,8 @@ import { FC } from "react";
 import { Link } from "react-router-dom";
 import logoImage from "../../assets/images/logo.png";
 import { PROJECT_NAME } from "../../constants";
+import { HOME_PAGE } from "../../constants/pagesConstants";
 import { PagesData } from "../../types/pagesTypes";
-import styles from "./Header.module.scss";
 
 interface HeaderMobileProps {
   pages: PagesData;
@@ -48,13 +48,16 @@ const HeaderMobile: FC<HeaderMobileProps> = ({
           }}
         >
           {pages.map((page) => (
-            <Link key={page.id} className={styles.navLink} to={page.href}>
-              <MenuItem key={page.id} onClick={handleCloseNavMenu}>
-                <Typography textAlign="center" color="black">
-                  {page.title}
-                </Typography>
-              </MenuItem>
-            </Link>
+            <MenuItem
+              component={Link}
+              to={page.href}
+              key={page.id}
+              onClick={handleCloseNavMenu}
+            >
+              <Typography textAlign="center" color="black">
+                {page.title}
+              </Typography>
+            </MenuItem>
           ))}
         </Menu>
       </Box>
@@ -66,8 +69,8 @@ const HeaderMobile: FC<HeaderMobileProps> = ({
           alignItems: "center",
         }}
       >
-        <IconButton size="large">
-          <img src={logoImage} className={styles.logo} alt="logo" />
+        <IconButton component={Link} to={HOME_PAGE.href} size="large">
+          <img src={logoImage} style={{ width: 40 }} alt="logo" />
         </IconButton>
         <Typography
           variant="h6"

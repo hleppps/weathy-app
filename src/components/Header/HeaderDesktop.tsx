@@ -8,7 +8,6 @@ import logoImage from "../../assets/images/logo.png";
 import { PROJECT_NAME } from "../../constants";
 import { HOME_PAGE } from "../../constants/pagesConstants";
 import { PagesData } from "../../types/pagesTypes";
-import styles from "./Header.module.scss";
 
 const HeaderDesktop: FC<{ pages: PagesData }> = ({ pages }) => {
   return (
@@ -21,7 +20,7 @@ const HeaderDesktop: FC<{ pages: PagesData }> = ({ pages }) => {
         }}
       >
         <IconButton size="large" component={Link} to={HOME_PAGE.href}>
-          <img src={logoImage} className={styles.logo} alt="logo" />
+          <img src={logoImage} style={{ width: 40 }} alt="logo" />
         </IconButton>
         <Typography
           variant="h6"

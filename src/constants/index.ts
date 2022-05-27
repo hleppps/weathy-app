@@ -9,4 +9,4 @@ export const config = {
 
 export const PROJECT_NAME = "WEATHY";
 
-export const DEFAULT_SELECTED_CITY = "London";
+export const DEFAULT_SELECTED_CITY = "Kiev";

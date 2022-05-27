@@ -1,16 +1,29 @@
 import { Box } from "@mui/material";
 import { FC } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Footer from "./components/Footer";
-import Header from "./components/Header";
-import PageBody from "./components/PageBody";
-import { GALLERY_PAGE, HOME_PAGE, NEWS_PAGE } from "./constants/pagesConstants";
-import GalleryPage from "./pages/GalleryPage";
-import HomePage from "./pages/HomePage";
-import NewsPage from "./pages/NewsPage";
-import NotFoundPage from "./pages/NotFoundPage";
+import { ToastContainer } from "react-toastify";
+import { useSigninCheck } from "reactfire";
+import SpinnerPage from "./pages/SpinnerPage";
+import Router from "./Router";
 
 const App: FC = () => {
+  const { data: signInData, status: signInStatus } = useSigninCheck();
+
+  if (signInStatus === "loading") {
+    return <SpinnerPage />;
+  }
+
+  if (signInStatus === "error") {
+    return null;
+  }
+
+  const userName = signInData?.user?.displayName as string;
+  const signedIn = signInData?.signedIn;
+
+  // It's even not a kostil, it's an invalidnaya kolyaska
+  if (signedIn && !userName) {
+    signInData.user.reload();
+  }
+
   return (
     <Box
       sx={{
@@ -20,16 +33,7 @@ const App: FC = () => {
         height: "100vh",
       }}
     >
-      <Header />
-      <PageBody>
-        <Routes>
-          <Route path="*" element={<NotFoundPage />} />
-          <Route path={HOME_PAGE.href} element={<HomePage />} />
-          <Route path={NEWS_PAGE.href} element={<NewsPage />} />
-          <Route path={GALLERY_PAGE.href} element={<GalleryPage />} />
-        </Routes>
-      </PageBody>
-      <Footer />
+      <Router signedIn={signedIn} userName={userName} />
     </Box>
   );
 };

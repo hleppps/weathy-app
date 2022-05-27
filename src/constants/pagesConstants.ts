@@ -10,4 +10,22 @@ export const GALLERY_PAGE: PageItem = {
   href: "/gallery",
 };
 
+export const LOGIN_PAGE: PageItem = {
+  id: 4,
+  title: "Login",
+  href: "/login",
+};
+
+export const REGISTER_PAGE: PageItem = {
+  id: 5,
+  title: "Register",
+  href: "/register",
+};
+
+export const PROFILE_PAGE: PageItem = {
+  id: 6,
+  title: "Profile",
+  href: "/profile",
+};
+
 export const PAGES: PagesData = [HOME_PAGE, NEWS_PAGE, GALLERY_PAGE];

@@ -1,5 +1,6 @@
 import SearchIcon from "@mui/icons-material/Search";
 import {
+  Alert,
   IconButton,
   InputAdornment,
   TextField,
@@ -13,12 +14,14 @@ interface SearchBoxProps {
   defaultValue: string;
   onSubmit: Dispatch<SetStateAction<string>>;
   placeholder: string;
+  errorMsg: string | null;
 }
 
 const SearchBox: FC<SearchBoxProps> = ({
   defaultValue,
   onSubmit,
   placeholder,
+  errorMsg,
 }) => {
   const [searchBoxValue, setSearchBoxValue] = useState(defaultValue);
 
@@ -56,6 +59,7 @@ const SearchBox: FC<SearchBoxProps> = ({
           />
         </form>
       </div>
+      {errorMsg && <Alert severity="error">{errorMsg}</Alert>}
     </Container>
   );
 };
