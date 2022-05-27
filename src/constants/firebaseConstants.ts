@@ -1,9 +1,9 @@
 export const firebaseConfig = {
-  apiKey: "AIzaSyB5gb2LD98jbI0Atq1ekIv0wessj9IQHtY",
-  authDomain: "weathy-ap.firebaseapp.com",
-  projectId: "weathy-ap",
-  storageBucket: "weathy-ap.appspot.com",
-  messagingSenderId: "605127201274",
-  appId: "1:605127201274:web:b80961bb28ec73168a1443",
-  measurementId: "G-R5RW0V9BG4",
+  apiKey: "AIzaSyDUV7ikhYmEbhzDBp4vvonx43KJ4vDFa1o",
+  authDomain: "weathy-app-43294.firebaseapp.com",
+  projectId: "weathy-app-43294",
+  storageBucket: "weathy-app-43294.appspot.com",
+  messagingSenderId: "321272883381",
+  appId: "1:321272883381:web:295e3140e4937396dab6fc",
+  measurementId: "G-RJVEG4GZGW",
 };

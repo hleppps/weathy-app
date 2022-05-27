@@ -24,6 +24,7 @@
     "axios": "^0.26.1",
     "firebase": "^9.8.1",
     "formik": "^2.2.9",
+    "gh-pages": "^4.0.0",
     "polished": "^4.2.2",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
@@ -47,6 +48,7 @@
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "lint:fix": "eslint --ext .js,.jsx,.ts,.tsx . --fix",
     "prepare": "husky install",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
@@ -80,7 +82,6 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-react-hooks": "^4.4.0",
-    "gh-pages": "^4.0.0",
     "husky": "^7.0.4",
     "node-sass": "^7.0.1",
     "prettier": "^2.6.2"

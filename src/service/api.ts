@@ -1,5 +1,4 @@
 import axios from "axios";
-import { toast } from "react-toastify";
 import { config } from "../constants";
 
 export const client = axios.create({

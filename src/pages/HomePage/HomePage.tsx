@@ -1,4 +1,4 @@
-import { Alert, Box } from "@mui/material";
+import { Box } from "@mui/material";
 import { FC, useCallback, useEffect, useState } from "react";
 import Carousel from "../../components/UI/Carousel";
 import SearchBox from "../../components/UI/SearchBox";
