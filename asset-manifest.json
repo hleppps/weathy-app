@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/weathy-app/static/css/main.3a627ef6.css",
+    "main.js": "/weathy-app/static/js/main.a9303c55.js",
+    "static/media/logo.png": "/weathy-app/static/media/logo.91cf5ba825394eb84066.png",
+    "index.html": "/weathy-app/index.html",
+    "static/media/slick.svg": "/weathy-app/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/weathy-app/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/weathy-app/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/weathy-app/static/media/slick.295183786cd8a1389865.woff",
+    "main.3a627ef6.css.map": "/weathy-app/static/css/main.3a627ef6.css.map",
+    "main.a9303c55.js.map": "/weathy-app/static/js/main.a9303c55.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3a627ef6.css",
+    "static/js/main.a9303c55.js"
+  ]
+}
